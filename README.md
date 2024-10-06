@@ -1,39 +1,31 @@
-# Algorithm（算法）
+# Algorithm（算法）仓库
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 简介
+探索经典算法，实现高效解题与优化。
 
-#### 软件架构
-软件架构说明
+## 目录结构
+- **优选算法**: 优化问题的高效算法
+- **贪心算法**: 贪心策略解决方案
+- **动态规划**: 递推与记忆化搜索
+- **递归与回溯**: 递归、搜索、回溯算法
 
+## 使用方式
+此仓库包含多个算法的C++实现，可以直接下载或克隆代码进行学习和应用。
 
-#### 安装教程
+## 适用人群
+  - 学习 C++ 编程语言的初学者
+  - 希望通过刷题提升算法能力的开发者
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 贡献
+欢迎提交 Pull Requests 来扩展或优化本项目！请确保代码格式整洁，并附带清晰的注释说明。
 
-#### 使用说明
+## 许可协议
+本项目基于 GNU GENERAL PUBLIC LICENSE Version 3 许可协议发布。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+版权 (C) 2024 <黄灿灿>
 
-#### 参与贡献
+详细的 GPLv3 许可证文本可以从 https://www.gnu.org/licenses/gpl-3.0.txt 获取。
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 重要说明：
+你可以自由复制、分发和修改本项目的代码，只要你发布的修改版代码也使用 GPLv3 许可证。
+你必须保留此版权声明和许可证文件。
