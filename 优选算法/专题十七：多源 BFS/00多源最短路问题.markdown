@@ -1,0 +1,137 @@
+### **单源最短路问题（Single-Source Shortest Path, SSSP）**
+
+#### 定义：
+
+- **单源最短路问题**指从==一个起点（source）==出发，找到到其他所有点的最短路径。
+- 常见算法：
+  - **Dijkstra算法**：适用于边权非负的图，利用优先队列实现高效路径扩展。
+  - **Bellman-Ford算法**：允许负权边，但时间复杂度较高。
+
+#### 思路：
+
+1. 从起点出发，初始化距离数组 `dist[]` 为无穷大（infinity），起点距离为0。
+2. 逐步松弛（relaxation）边，更新最短路径，直到所有节点的最短路径确定。
+
+------
+
+### **多源最短路问题（Multi-Source Shortest Path, MSSP）**
+
+#### 定义：
+
+- **多源最短路问题**指从==多个起点==出发，找到到其他所有点的最短路径。
+
+#### 解决方法：
+
+1. **暴力法**：
+   - 对每个起点单独运行单源最短路算法（如Dijkstra），计算所有点的最短路径，把多源最短路问题转化成若干个单源最短路问题。
+   - 缺点：对于较大的图，这种方法可能效率较低，大概率是会超时的。
+2. **超级起点法**：
+   - 将多个起点合并为一个“超级起点”（super source）。
+   - 给超级起点与每个真实起点连一条权重为0的边，然后运行单源最短路算法。
+
+------
+
+### **多源BFS**
+
+#### 特殊场景：
+
+- 图的边权固定为1（如无权图）。
+- 使用广度优先搜索（BFS）可以快速求解多源最短路。
+
+#### 实现步骤：
+
+1. 将所有源点加入队列（queue）作为超级起点。
+2. 以BFS的方式逐层遍历，更新每个节点的最短距离。
+
+------
+
+### **代码实现**
+
+下面以 **多源BFS** 为例，求解边权为1的多源最短路问题。
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <climits>
+using namespace std;
+
+// 图的邻接表表示
+const int INF = INT_MAX;
+
+void multiSourceBFS(const vector<vector<int>>& graph, const vector<int>& sources, vector<int>& distances) 
+{
+    int n = graph.size();
+    distances.assign(n, INF);           // 初始化所有点的最短距离为无穷大
+
+    queue<int> q;                       // BFS队列
+    for (int source : sources) 
+    {
+        q.push(source);                 // 将所有起点加入队列
+        distances[source] = 0;          // 起点到自身的距离为0
+    }
+
+    while (!q.empty()) 
+    {
+        int node = q.front();
+        q.pop();
+
+        for (int neighbor : graph[node]) 
+        {
+            if (distances[neighbor] > distances[node] + 1) 
+            {
+                distances[neighbor] = distances[node] + 1; // 更新最短距离
+                q.push(neighbor);                          // 将未访问的节点加入队列
+            }
+        }
+    }
+}
+
+int main() 
+{
+    vector<vector<int>> graph = 
+    {
+        {1, 2},          // 节点0的邻居
+        {0, 3},          // 节点1的邻居
+        {0, 3},          // 节点2的邻居
+        {1, 2}           // 节点3的邻居
+    };
+
+    vector<int> sources = {0, 3};       // 起点集合
+    vector<int> distances;
+
+    multiSourceBFS(graph, sources, distances);
+
+    // 输出结果
+    for (int i = 0; i < distances.size(); ++i) 
+    {
+        cout << "Node " << i << ": " << distances[i] << endl;
+    }
+
+    return 0;
+}
+```
+
+------
+
+### **超级起点法的正确性分析**
+
+#### 理性分析：
+
+1. **转化的正确性**：
+   - 超级起点连接所有真实起点，且连接边的权重为0。
+   - 等价于多个起点同时作为单源算法的起点。
+2. **最优性**：
+   - 超级起点法通过单源最短路的松弛操作，确保从任一真实起点到任一目标点的最短路径被正确计算。
+
+#### 感性理解：
+
+- 超级起点相当于一个虚拟点，它通过边权为0的连接“共享”了所有起点的初始位置。
+
+------
+
+### **总结**
+
+- **单源最短路问题**：Dijkstra适合非负边权图，Bellman-Ford支持负权边。
+- **多源最短路问题**：暴力法简单但效率低，超级起点法更高效。
+- **多源BFS**：适用于边权为1的场景，效率高且易于实现。 
