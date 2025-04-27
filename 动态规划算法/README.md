@@ -119,4 +119,6 @@
 1. [96. 不同的二叉搜索树](https://leetcode.cn/problems/unique-binary-search-trees/)  
 
 
+#### 其他相关
 
+[灵神题单：动态规划（入门/背包/划分/状态机/区间/状压/数位/树形/优化）](https://leetcode.cn/discuss/post/3581838/fen-xiang-gun-ti-dan-dong-tai-gui-hua-ru-007o/)
