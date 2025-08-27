@@ -1,0 +1,3 @@
+# 强制把 .h 文件算成 C++
+*.h linguist-language=C++
+*.png    linguist-detectable=false
